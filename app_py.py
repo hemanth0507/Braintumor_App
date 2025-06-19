@@ -7,10 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1xshE7dX5L_2agKTYCw3tdLjCyWMBqmtn
 """
 
-!pip install streamlit
-
-!pip install gdown
-
 import streamlit as st
 import numpy as np
 import tensorflow as tf
