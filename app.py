@@ -9,6 +9,19 @@ import os
 import time
 import pandas as pd
 
+import requests
+from tensorflow.keras.models import load_model
+
+MODEL_URL = "https://github.com/your-username/your-repo/releases/download/v1.0/brain_model.h5"
+MODEL_PATH = "brain_model.h5"
+
+if not os.path.exists(MODEL_PATH):
+    print("Downloading model...")
+    r = requests.get(MODEL_URL)
+    with open(MODEL_PATH, "wb") as f:
+        f.write(r.content)
+
+model = load_model(MODEL_PATH)
 # Set page configuration
 st.set_page_config(
     page_title="Brain Tumor Detection System",
