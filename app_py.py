@@ -9,8 +9,6 @@ Original file is located at
 
 import streamlit as st
 import numpy as np
-import tensorflow as tf
-import cv2
 from PIL import Image
 import matplotlib.pyplot as plt
 import io
