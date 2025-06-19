@@ -18,10 +18,14 @@ import requests
 
 MODEL_URL = "https://github.com/hemanth0507/Braintumor_App/releases/download/v1.0/brain_tumor_ml.h5"
 MODEL_PATH = "brain_tumor_ml.h5"
+from pathlib import Path
+
+MODEL_URL = "https://github.com/hemanth0507/Braintumor_App/releases/download/v1.0/brain_tumor_ml.h5"
+MODEL_PATH = "brain_tumor_ml.h5"
 
 def download_model(url, path):
-    import os
-    if os.path.exists(path):
+    model_file = Path(path)
+    if model_file.exists():
         print(f"Model already exists at {path}. Skipping download.")
         return
 
@@ -36,6 +40,7 @@ def download_model(url, path):
         raise Exception(f"Failed to download file: Status code {r.status_code}")
 
 download_model(MODEL_URL, MODEL_PATH)
+
 
 # Set page configuration
 st.set_page_config(
