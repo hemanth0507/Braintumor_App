@@ -1,10 +1,8 @@
 streamlit
-tensorflow
 pillow
 numpy
 matplotlib
 scikit-learn
-opencv-python
 pandas
 gtts
 requests
