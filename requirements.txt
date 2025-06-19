@@ -6,3 +6,5 @@ matplotlib
 scikit-learn
 opencv-python
 pandas
+gtts
+requests
