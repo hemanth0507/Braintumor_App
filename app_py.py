@@ -16,11 +16,11 @@ import time
 import pandas as pd
 import requests
 
-
 MODEL_URL = "https://github.com/hemanth0507/Braintumor_App/releases/download/v1.0/brain_tumor_ml.h5"
 MODEL_PATH = "brain_tumor_ml.h5"
 
 def download_model(url, path):
+    import os
     if os.path.exists(path):
         print(f"Model already exists at {path}. Skipping download.")
         return
@@ -36,7 +36,6 @@ def download_model(url, path):
         raise Exception(f"Failed to download file: Status code {r.status_code}")
 
 download_model(MODEL_URL, MODEL_PATH)
-
 
 # Set page configuration
 st.set_page_config(
@@ -199,16 +198,13 @@ with tabs[0]:
                 time.sleep(0.01)  # Simulate processing time
                 my_bar.progress(percent_complete + 1, text=progress_text)
 
-            # Preprocess the image (simulated as we don't have the actual model here)
-            img = np.array(image)
-            img_resized = cv2.resize(img, (224, 224))
+            # Preprocess the image manually (resize & normalize without cv2)
+            img = np.array(image.convert("RGB"))
+            img_resized = np.array(image.resize((224, 224)))
             img_normalized = img_resized / 255.0
             img_batch = np.expand_dims(img_normalized, axis=0)
 
-            # Sample prediction logic (simulating model prediction)
-            # In a real scenario, you would load the model and make a prediction
-            # prediction = model.predict(img_batch)
-            # Here we're using a random value to simulate a prediction
+            # Simulate model prediction (replace this with actual model.predict later)
             prediction_value = np.random.uniform(0, 1)
 
             # Display prediction results
@@ -248,14 +244,16 @@ with tabs[0]:
                     st.image(image, caption="Original Image", use_column_width=True)
 
                 with col_prep2:
-                    # Convert to grayscale for visualization
-                    gray_img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+                    # Convert to grayscale manually without cv2
+                    gray_img = image.convert("L")
                     st.image(gray_img, caption="Grayscale Conversion", use_column_width=True)
 
                 with col_prep3:
-                    # Apply a simple edge detection for visualization
-                    edges = cv2.Canny(img, 100, 200)
+                    # Simple edge detection replacement with PIL filter (since no cv2)
+                    from PIL import ImageFilter
+                    edges = image.convert("L").filter(ImageFilter.FIND_EDGES)
                     st.image(edges, caption="Edge Detection", use_column_width=True)
+
         else:
             st.markdown("<p class='info-text'>Upload an image and click 'Analyze Image' to see the results.</p>", unsafe_allow_html=True)
 
@@ -372,11 +370,7 @@ with tabs[2]:
     - 1 flatten layer
     - 2 dense layers
 
-
-
     The model takes an input image of size 224x224 pixels and outputs a prediction indicating the probability of a tumor being present in the scan.
-
-
     """)
 
     col_info1, col_info2 = st.columns(2)
@@ -469,14 +463,4 @@ with tabs[3]:
 
     with st.expander("Can I use this for other medical imaging?"):
         st.markdown("""
-        No, this specific model has been trained exclusively on brain MRI scans for tumor detection. It is not designed to analyze other types of medical images or detect other conditions.
-        """)
-
-    st.markdown("</div>", unsafe_allow_html=True)
-
-# Footer
-st.markdown("---")
-st.markdown(
-    "<p class='footer'>Disclaimer: This application is intended for educational and preliminary screening purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>",
-    unsafe_allow_html=True
-)
+        No,
