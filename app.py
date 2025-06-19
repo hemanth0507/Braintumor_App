@@ -12,8 +12,8 @@ import pandas as pd
 import requests
 from tensorflow.keras.models import load_model
 
-MODEL_URL = "https://github.com/your-username/your-repo/releases/download/v1.0/brain_model.h5"
-MODEL_PATH = "brain_model.h5"
+MODEL_URL = "https://github.com/your-username/your-repo/releases/download/v1.0/brain_tumor_ml.h5"
+MODEL_PATH = "brain_tumor_ml.h5"
 
 if not os.path.exists(MODEL_PATH):
     print("Downloading model...")
