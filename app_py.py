@@ -462,10 +462,28 @@ with tabs[3]:
         """)
 
     with st.expander("What should I do if a tumor is detected?"):
-        st.markdown("""
-        If the system detects a potential tumor, it is important to consult with a medical professional immediately. This tool is designed for preliminary screening only and should not be used for self-diagnosis or treatment decisions.
+        st.markdown("""If the system detects a potential tumor, it is important to consult with a medical professional immediately. This tool is designed for preliminary screening only and should not be used for self-diagnosis or treatment decisions.
         """)
 
     with st.expander("Can I use this for other medical imaging?"):
         st.markdown("""
-        No,
+        No,""")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    
