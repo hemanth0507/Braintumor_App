@@ -16,11 +16,10 @@ import os
 import time
 import pandas as pd
 
-import requests
-from tensorflow.keras.models import load_model
+
 import os
 import requests
-from tensorflow.keras.models import load_model
+
 import os
 import requests
 
