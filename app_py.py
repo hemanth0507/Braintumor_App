@@ -12,16 +12,10 @@ import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
 import io
-import os
 import time
 import pandas as pd
-
-
-import os
 import requests
 
-import os
-import requests
 
 MODEL_URL = "https://github.com/hemanth0507/Braintumor_App/releases/download/v1.0/brain_tumor_ml.h5"
 MODEL_PATH = "brain_tumor_ml.h5"
