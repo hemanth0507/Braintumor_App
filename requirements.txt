@@ -1,8 +1,35 @@
-streamlit
-pillow
+# Gradio app and web interface
+gradio==3.50.2
+
+# TensorFlow & Image preprocessing
+tensorflow
 numpy
-matplotlib
-scikit-learn
+pillow
+
+# Report generation
+reportlab
+
+# Text-to-Speech
+gTTS
+
+# Speech recognition
+SpeechRecognition
+pyaudio  # If using locally; skip for Colab
+
+# Emailing
+secure-smtplib  # Optional; not a PyPI package, Python stdlib handles this
+
+# Pandas and Excel
 pandas
-gtts
-requests
+openpyxl
+
+# Scikit-learn for suggestions
+scikit-learn
+
+# Transformers (optional if planning NLP features like summarization)
+transformers
+sentencepiece
+
+# Other dependencies
+pydantic<2.0
+difflib  # Built-in, no need to install
